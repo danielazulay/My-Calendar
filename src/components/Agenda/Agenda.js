@@ -14,11 +14,11 @@ class Agenda extends Component {
       <div>
         <div className="container">
           <div className="row">
-            <nav class="navbar navbar-dark bg-dark">
-              <Link to="/" class="navbar-brand">
+            <nav className="navbar navbar-dark bg-dark">
+              <Link to="/" className="navbar-brand">
                 {"Agenda "}
               </Link>
-              <Link to="/" class="navbar-brand">
+              <Link to="/" className="navbar-brand">
                 {this.state.startDay.format("MMMM Do YYYY, h:mm:ss a")}
               </Link>
             </nav>

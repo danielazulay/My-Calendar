@@ -3,46 +3,36 @@ import Modal from "react-modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 
+Modal.setAppElement("#root");
+
 class NewEventModal extends Component {
-  state = {
-    showModal: false,
-  };
-
-  handleOpenModal = (event) => {
-    this.setState({ showModal: true });
-  };
-
-  handleCloseModal = (event) => {
-    this.setState({ showModal: false });
-  };
-
   render() {
+    console.log(this.props.clickedDay);
     return (
       <div>
-        <button onClick={this.handleOpenModal} className="btn btn-primary">
-          New event
-        </button>
         <Modal
-          isOpen={this.state.showModal}
-          onRequestClose={this.handleCloseModal}
+          isOpen={this.props.showModal}
+          onRequestClose={this.props.handleCloseModal}
           contentLabel="New Event Modal"
         >
           <div className="form-group">
             <form>
               <input
                 className="form-control mt-3"
-                label="Event name"
+                type="text"
+                placeholder="Event name"
+              />
+              <input
+                className="form-control mt-2"
+                placeholder="Event description"
                 type="text"
               />
               <input
                 className="form-control mt-2"
-                label="Event description"
-                type="text"
-              />
-              <input
-                className="form-control mt-2"
-                label="Event date"
+                placeholder="Event date"
                 type="date"
+                value={this.props.clickedDay}
+                onChange={() => {}}
               />
 
               <div className="form-group">
@@ -50,7 +40,7 @@ class NewEventModal extends Component {
                   Save
                 </button>
                 <button
-                  onClick={this.handleCloseModal}
+                  onClick={this.props.handleCloseModal}
                   className="btn btn-danger mt-3"
                 >
                   Close
