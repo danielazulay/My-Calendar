@@ -2,7 +2,7 @@ import { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import moment from "moment"
 import { Link } from "react-router-dom";
-import Days from "./Day.jsx"
+import Days from "../Days/Days.js"
 
 class Agenda extends Component {
   state = {
@@ -13,10 +13,7 @@ class Agenda extends Component {
   };
 
  
-handleMoth=()=>{
 
-
-}
 
 
   render() {

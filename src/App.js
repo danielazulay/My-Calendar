@@ -1,5 +1,5 @@
 import { BrowserRouter, Route } from "react-router-dom";
-import './App.css';
+import './components/App/App.css';
 
 import Agenda from './components/Agenda/Agenda'
 

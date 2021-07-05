@@ -6,6 +6,11 @@ import { Component } from "react";
 Modal.setAppElement("#root");
 
 class NewEventModal extends Component {
+
+
+
+
+
   render() {
     console.log(this.props.clickedDay);
     return (
@@ -16,27 +21,34 @@ class NewEventModal extends Component {
           contentLabel="New Event Modal"
         >
           <div className="form-group">
-            <form>
+            <form >
               <input
                 className="form-control mt-3"
                 type="text"
                 placeholder="Event name"
+                name="eventName"
+                value={this.props.eventName}
+                onChange={this.props.handleChange}
               />
               <input
                 className="form-control mt-2"
                 placeholder="Event description"
                 type="text"
+                name="description"
+                value={this.props.description}
+                onChange={this.props.handleChange}
               />
               <input
                 className="form-control mt-2"
                 placeholder="Event date"
                 type="date"
+                name="date"
                 value={this.props.clickedDay}
-                onChange={() => {}}
+                onChange={this.props.handleChange}
               />
 
               <div className="form-group">
-                <button type="submit" className="btn btn-primary mt-3">
+                <button type="submit" className="btn btn-primary mt-3" onClick={this.props.handleSubmit}>
                   Save
                 </button>
                 <button
