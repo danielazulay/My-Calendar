@@ -7,13 +7,16 @@ import Days from "./Day"
 class Agenda extends Component {
   state = {
 
-    moth: [1, 2, 3, 4, 5, 6, 7],
+ 
  
     startDay:moment(),
   };
 
  
+handleMoth=()=>{
 
+
+}
 
 
   render() {
@@ -29,12 +32,12 @@ class Agenda extends Component {
                 {"Agenda "}
               </Link>
               <Link to="/" class="navbar-brand">
-                {this.state.startDay.format('MMMM')}
+                {this.state.startDay.format('MMMM Do YYYY, h:mm:ss a')}
               </Link>
             </nav>
             <div className="col-4"></div>
 
-            <div className="col-8">
+            <div  className="col-8">
             {/*  {   <div className="row">
                 {this.state.moth.map((day) => {
                   return <div className="col ">{day}</div>;

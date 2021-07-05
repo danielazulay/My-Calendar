@@ -1,4 +1,4 @@
-import {Component} from 'react'
+
 import  'bootstrap/dist/css/bootstrap.min.css'
 import moment from "moment"
 
@@ -15,25 +15,38 @@ let day = startDay.clone().subtract(1,"day")
 
 while(day.isBefore(endDay,"day") ){
 
-calendar.push(day.add(1,"day").clone().date()) 
+calendar.push(day.add(1,"day").clone().format("YYYYMMDD")) 
+
 
 }
+
+
+
+
+
 return<div>
- <div className="row">
+  <div className="container">
+  <div  className="row row-cols-6">
 {calendar.map((a,indice)=>{
+
 return (
 
-indice % 7 !==0? <div className="col">{a}</div> : <div className="row"></div> 
-          
+
+
 
  
+  <div  id="wd" className="col" >{a.slice(-2)}</div>
+
+
 
 )
 
 }) }
-</div> 
+</div>
+</div>
 
 
 </div>
+
 }
 
