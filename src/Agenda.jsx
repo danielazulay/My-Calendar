@@ -9,7 +9,7 @@ class Agenda extends Component {
 
     moth: [1, 2, 3, 4, 5, 6, 7],
  
-    startDay:'',
+    startDay:moment(),
   };
 
  
@@ -29,7 +29,7 @@ class Agenda extends Component {
                 {"Agenda "}
               </Link>
               <Link to="/" class="navbar-brand">
-                {this.state.startDay}
+                {this.state.startDay.format('MMMM')}
               </Link>
             </nav>
             <div className="col-4"></div>
