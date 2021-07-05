@@ -1,81 +1,39 @@
 import {Component} from 'react'
 import  'bootstrap/dist/css/bootstrap.min.css'
-
-import { Link } from "react-router-dom";
-
-
-class Days extends Component{
-
-
-render(){
-
-    return(
-
-<div>
+import moment from "moment"
 
 
 
+export default function Days() {
 
 
-<div className="col-8"> 
+let value = moment()
+let startDay = value.clone().startOf("month").startOf('week')
+let endDay = value.clone().endOf("month").endOf('week')
+let calendar =[]
+let day = startDay.clone().subtract(1,"day")
 
+while(day.isBefore(endDay,"day") ){
 
-
-
-  <div className="row">
-    <div className="col ">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-  </div>
-  <div className="row">
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-  </div>
-  <div className="row">
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-  </div>
-  <div className="row">
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-    <div className="col">Column</div>
-  </div>
-  <div className="row ">
-
-    <div class="col-2">Column</div>
-    <div class="col-2">Column</div>
-    <div class="col-2">Column</div>
-
-
-  </div>
-  </div>
-  
-  </div>
-
-
-    )
-}
-
-
+calendar.push(day.add(1,"day").clone().date()) 
 
 }
+return<div>
+ <div className="row">
+{calendar.map((a,indice)=>{
+return (
 
-export default Days
+indice % 7 !==0? <div className="col">{a}</div> : <div className="row"></div> 
+          
+
+ 
+
+)
+
+}) }
+</div> 
+
+
+</div>
+}
+
