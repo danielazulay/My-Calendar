@@ -32,41 +32,17 @@ handleMoth=()=>{
                 {"Agenda "}
               </Link>
               <Link to="/" class="navbar-brand">
-                {this.state.startDay.format('MMMM Do YYYY, h:mm:ss a')}
+                {this.state.startDay.format('MMMM')}
               </Link>
+
+          
+
             </nav>
+     
             <div className="col-4"></div>
 
             <div  className="col-8">
-            {/*  {   <div className="row">
-                {this.state.moth.map((day) => {
-                  return <div className="col ">{day}</div>;
-                })}
-              </div>
-
-              <div className="row">
-                {this.state.moth.map((day) => {
-                  return <div className="col ">{day}</div>;
-                })}
-              </div>
-
-              <div className="row">
-                {this.state.moth.map((day) => {
-                  return <div className="col ">{day}</div>;
-                })}
-              </div>
-
-              <div className="row">
-                {this.state.moth.map((day) => {
-                  return <div className="col ">{day}</div>;
-                })}
-              </div>
-
-              <div className="row">
-                <div className="col-2 ">29</div>
-                <div className="col-2 ">30</div>
-                <div className="col-2 ">31</div>
-              </div> */}
+           
 
             <Days/>
             </div> 
