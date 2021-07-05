@@ -1,17 +1,13 @@
 import { BrowserRouter, Route } from "react-router-dom";
-import './App.css';
+import "./App.css";
 
-import Agenda from './Agenda'
+import Agenda from "../Agenda/Agenda";
 
 function App() {
   return (
-   
     <BrowserRouter>
-   
-
-    <Route path="/" component={Agenda} />
+      <Route path="/" component={Agenda} />
     </BrowserRouter>
-
   );
 }
 
