@@ -19,11 +19,13 @@ function WeekDays(props) {
                 let randomB = Math.floor(Math.random() * 255);
                 return (
                   <button
+                   
+                 
                     style={{
                       backgroundColor: `rgb(${randomR},${randomG},${randomB})`,
                     }}
                     className="boxlist btn m-1"
-                    onClick={props.handleOpenModal}
+                    onClick={props.handleOpenModalEdit}
                   >
                     {eventDay.eventName}
                   </button>

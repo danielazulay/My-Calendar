@@ -2,8 +2,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 import moment from "moment";
 import NewEventModal from "../NewEventModal/NewEventModal";
+import EditModal from "../Agenda/EditModal";
 import axios from "axios";
-import ReactDOM from "react-dom";
+
 
 import "./Days.css";
 import WeekDays from "../WeekDays/WeekDays";
@@ -11,6 +12,7 @@ import WeekDays from "../WeekDays/WeekDays";
 class Days extends Component {
   state = {
     showModal: false,
+    showModalEdit:false,
     clickedDay: "",
     currentMoment: moment(),
     eventName: "",
@@ -26,6 +28,8 @@ class Days extends Component {
     console.log(event.target.value);
   };
 
+
+
   handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -37,7 +41,7 @@ class Days extends Component {
           date: this.state.clickedDay,
         }
       );
-
+      this.componentDidMount()
       this.handleCloseModal();
     } catch (err) {
       console.log(err);
@@ -69,6 +73,17 @@ class Days extends Component {
   handleCloseModal = (event) => {
     this.setState({ showModal: false });
   };
+
+  //edit modal
+
+  handleOpenModalEdit = (event) => {
+    this.setState({ showModalEdit: true, clickedDay: event.target.id });
+  };
+
+  handleCloseModalEdit = (event) => {
+    this.setState({ showModalEdit: false });
+  };
+
 
   handleChangeMonth = (event) => {
     this.setState({
@@ -138,6 +153,18 @@ class Days extends Component {
           showModal={this.state.showModal}
           handleCloseModal={this.handleCloseModal}
           handleOpenModal={this.handleOpenModal}
+          handleChange={this.handleChange}
+          clickedDay={this.state.clickedDay}
+          eventName={this.state.eventName}
+          description={this.state.description}
+          handleSubmit={this.handleSubmit}
+          date={this.state.date}
+        />
+
+<EditModal
+          showModalEdit={this.state.showModalEdit}
+          handleCloseModalEdit={this.handleCloseModalEdit}
+          handleOpenModalEdit={this.handleOpenModalEdit}
           handleChange={this.handleChange}
           clickedDay={this.state.clickedDay}
           eventName={this.state.eventName}
