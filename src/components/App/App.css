@@ -7,9 +7,3 @@
 #wd {
   width: 14.28%;
 }
-.boxlist {
-  max-height: 100px;
-overflow-y: scroll;
- 
-}
-
