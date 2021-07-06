@@ -3,7 +3,7 @@ import { Component } from "react";
 import moment from "moment";
 import NewEventModal from "../NewEventModal/NewEventModal";
 import axios from 'axios'
-
+import ReactDOM from 'react-dom'
 
 
 
@@ -15,7 +15,8 @@ class Days extends Component {
     eventName:'',
     description:'',
     date:'',
-calendar:[]
+    calendar:[],
+    dayEvent:[]
 
   };
 
@@ -47,15 +48,14 @@ calendar:[]
   } 
 
 
-  handleDidMount = async(event)=>{
-    event.preventDefault()
+  componentDidMount = async () => {
+
     try{
      const response = await axios.get('https://ironrest.herokuapp.com/calendar')
 
 
-this.setState({calendar:{...response.data}})
-   
-console.log(this.state.calendar)
+this.setState({calendar:[...response.data]})
+
 
 
     }catch(err){
@@ -63,6 +63,15 @@ console.log(this.state.calendar)
      console.log(err)
     }
  } 
+
+ handleFilter = (x) => {
+  return this.state.calendar.filter((day)=>{
+    return day.date===x
+  }).map((day) => {
+    return <li className="list-group-item">{day.eventName}</li>
+  })
+};
+
 
   handleOpenModal = (event) => {
     this.setState({ showModal: true, clickedDay: event.target.id });
@@ -94,6 +103,7 @@ console.log(this.state.calendar)
       calendar.push(day.add(1, "day").clone().format("YYYY-MM-DD"));
     }
 
+
     return (
       <div>
         <div className="container">
@@ -108,14 +118,30 @@ console.log(this.state.calendar)
           <div className="row row-cols-6">
             {calendar.map((day) => {
               return (
-                <div
+              
+
+                  <div
                   key={day}
                   id={day}
                   className="col wd"
                   role="button"
                   onClick={this.handleOpenModal}
                 >
-                  {day.slice(-2)}
+                   {day.slice(-2)}
+             <ul class="list-group">
+             {this.handleFilter(day)}
+             
+   
+
+                </ul>
+              
+           
+
+            
+                  
+                    
+                 
+               
                 </div>
               );
             })}
