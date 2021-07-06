@@ -2,76 +2,66 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 import moment from "moment";
 import NewEventModal from "../NewEventModal/NewEventModal";
-import axios from 'axios'
-import ReactDOM from 'react-dom'
-
-
+import axios from "axios";
+import ReactDOM from "react-dom";
 
 class Days extends Component {
   state = {
     showModal: false,
     clickedDay: "",
     currentMoment: moment(),
-    eventName:'',
-    description:'',
-    date:'',
-    calendar:[],
-    dayEvent:[]
-
+    eventName: "",
+    description: "",
+    date: "",
+    calendar: [],
+    dayEvent: [],
   };
 
-  handleChange=(event)=>{
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
 
-    this.setState({[event.target.name]:event.target.value})
+    console.log(event.target.value);
+  };
 
-    console.log(event.target.value)
-  }
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://ironrest.herokuapp.com/calendar",
+        {
+          eventName: this.state.eventName,
+          description: this.state.description,
+          date: this.state.clickedDay,
+        }
+      );
 
-   handleSubmit = async(event)=>{
-     event.preventDefault()
-     try{
-      const response = await axios.post('https://ironrest.herokuapp.com/calendar',
-      {eventName:this.state.eventName,
-        description: this.state.description,
-        date:this.state.clickedDay})
-
-
-
-        this.handleCloseModal()
-
-
-
-     }catch(err){
-
-      console.log(err)
-     }
-  } 
-
+      this.handleCloseModal();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   componentDidMount = async () => {
+    try {
+      const response = await axios.get(
+        "https://ironrest.herokuapp.com/calendar"
+      );
 
-    try{
-     const response = await axios.get('https://ironrest.herokuapp.com/calendar')
-
-
-this.setState({calendar:[...response.data]})
-
-
-
-    }catch(err){
-
-     console.log(err)
+      this.setState({ calendar: [...response.data] });
+    } catch (err) {
+      console.log(err);
     }
- } 
+  };
 
- handleFilter = (x) => {
-  return this.state.calendar.filter((day)=>{
-    return day.date===x
-  }).map((day) => {
-    return <li className="list-group-item">{day.eventName}</li>
-  })
-};
-
+  handleFilter = (x) => {
+    return this.state.calendar
+      .filter((day) => {
+        return day.date === x;
+      })
+      .map((day) => {
+        return  <li className="list-group-item" >{day.eventName}</li>;
+      });
+  };
 
   handleOpenModal = (event) => {
     this.setState({ showModal: true, clickedDay: event.target.id });
@@ -103,12 +93,9 @@ this.setState({calendar:[...response.data]})
       calendar.push(day.add(1, "day").clone().format("YYYY-MM-DD"));
     }
 
-
     return (
       <div>
         <div className="container">
-    
-        
           <button id="-1" onClick={this.handleChangeMonth}>
             Previous month
           </button>
@@ -118,31 +105,21 @@ this.setState({calendar:[...response.data]})
           <div className="row row-cols-6">
             {calendar.map((day) => {
               return (
-              
-
-                  <div
+                <div
                   key={day}
                   id={day}
                   className="col wd"
                   role="button"
                   onClick={this.handleOpenModal}
                 >
-                   {day.slice(-2)}
-             <ul class="list-group">
-             {this.handleFilter(day)}
-             
-   
-
-                </ul>
-              
-           
-
+                  {day.slice(-2)}
             
-                  
-                    
+                  <ul className="boxlist list-group" >
+                  {this.handleFilter(day)}
+</ul>
+                  </div>
                  
-               
-                </div>
+            
               );
             })}
           </div>

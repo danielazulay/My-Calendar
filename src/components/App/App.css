@@ -1,9 +1,15 @@
 .col {
-  width: 100px;
-  height: 120px;
+  width: 120px;
+  height: 140px;
   border: 1px solid silver;
 }
 
 #wd {
   width: 14.28%;
 }
+.boxlist {
+  max-height: 100px;
+overflow-y: scroll;
+ 
+}
+
