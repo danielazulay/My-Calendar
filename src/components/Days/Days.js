@@ -112,36 +112,6 @@ class Days extends Component {
           >
             Next month <i className="fas fa-chevron-right"></i>
           </button>
-          <div className="row row-cols-6">
-            {calendar.map((day) => {
-              return (
-                <div
-                  key={day}
-                  id={day}
-                  className="col wd"
-                  role="button"
-                  onClick={this.handleOpenModal}
-                >
-                  {day.slice(-2)}
-
-                  <ul className="boxlist list-group">
-                    {this.handleFilter(day)}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-          <NewEventModal
-            showModal={this.state.showModal}
-            handleCloseModal={this.handleCloseModal}
-            handleOpenModal={this.handleOpenModal}
-            handleChange={this.handleChange}
-            clickedDay={this.state.clickedDay}
-            eventName={this.state.eventName}
-            description={this.state.description}
-            handleSubmit={this.handleSubmit}
-            date={this.state.date}
-          />
         </div>
         <div className="row row-cols-6">
           {calendar.map((day) => {
