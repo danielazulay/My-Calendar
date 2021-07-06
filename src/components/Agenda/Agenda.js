@@ -4,6 +4,8 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import Days from "../Days/Days";
 
+import "./Agenda.css";
+
 class Agenda extends Component {
   state = {
     startDay: moment(),
@@ -14,16 +16,16 @@ class Agenda extends Component {
       <div>
         <div className="container">
           <div className="row">
-            <nav className="navbar navbar-dark bg-dark">
+            <nav className="navbar navbar-dark">
               <Link to="/" className="navbar-brand">
-                {"Agenda "}
+                {"My personal Calendar"}
               </Link>
               <Link to="/" className="navbar-brand">
-                {this.state.startDay.format("MMMM Do YYYY, h:mm:ss a")}
+                {this.state.startDay.format("MMMM YYYY")}
               </Link>
             </nav>
-            <div className="col-4"></div>
-            <div className="col-8">
+
+            <div className="col-12">
               <Days />
             </div>
           </div>
