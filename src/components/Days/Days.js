@@ -124,7 +124,7 @@ class Days extends Component {
                 onClick={this.handleOpenModal}
               >
                 {day.slice(-2)}
-                <ul class="list-group">{this.handleFilter(day)}</ul>
+                <ul class="boxlist list-group">{this.handleFilter(day)}</ul>
               </div>
             );
           })}
