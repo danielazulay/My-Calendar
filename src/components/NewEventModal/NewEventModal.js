@@ -48,7 +48,7 @@ class NewEventModal extends Component {
               />
 
               <div className="form-group">
-                <button type="submit" className="btn btn-primary mt-3" onClick={this.props.handleSubmit}>
+                <button type="submit" className="btn btn-primary mt-3" onClick={this.props.handleSubmit} >
                   Save
                 </button>
                 <button

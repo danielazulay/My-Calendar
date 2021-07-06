@@ -5,6 +5,8 @@ import NewEventModal from "../NewEventModal/NewEventModal";
 import axios from 'axios'
 
 
+
+
 class Days extends Component {
   state = {
     showModal: false,
@@ -12,7 +14,9 @@ class Days extends Component {
     currentMoment: moment(),
     eventName:'',
     description:'',
-    date:''
+    date:'',
+calendar:[]
+
   };
 
   handleChange=(event)=>{
@@ -32,7 +36,7 @@ class Days extends Component {
 
 
 
-
+        this.handleCloseModal()
 
 
 
@@ -41,6 +45,24 @@ class Days extends Component {
       console.log(err)
      }
   } 
+
+
+  handleDidMount = async(event)=>{
+    event.preventDefault()
+    try{
+     const response = await axios.get('https://ironrest.herokuapp.com/calendar')
+
+
+this.setState({calendar:{...response.data}})
+   
+console.log(this.state.calendar)
+
+
+    }catch(err){
+
+     console.log(err)
+    }
+ } 
 
   handleOpenModal = (event) => {
     this.setState({ showModal: true, clickedDay: event.target.id });
@@ -75,6 +97,8 @@ class Days extends Component {
     return (
       <div>
         <div className="container">
+    
+        
           <button id="-1" onClick={this.handleChangeMonth}>
             Previous month
           </button>
