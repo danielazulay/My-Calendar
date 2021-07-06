@@ -11,22 +11,25 @@ class Agenda extends Component {
     startDay: moment(),
   };
 
+  handleChangeMonth = (moment) => {
+    this.setState({ startDay: moment });
+  };
   render() {
     return (
       <div>
-        <div className="container">
+        <div className="mx-5">
           <div className="row">
             <nav className="navbar navbar-dark">
               <Link to="/" className="navbar-brand">
-                {"My personal Calendar"}
+                {"My personal calendar"}
               </Link>
               <Link to="/" className="navbar-brand">
                 {this.state.startDay.format("MMMM YYYY")}
               </Link>
             </nav>
 
-            <div className="col-12">
-              <Days />
+            <div>
+              <Days handleChangeNav={this.handleChangeMonth} />
             </div>
           </div>
         </div>
