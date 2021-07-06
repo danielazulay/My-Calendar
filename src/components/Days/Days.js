@@ -6,6 +6,7 @@ import axios from "axios";
 import ReactDOM from "react-dom";
 
 import "./Days.css";
+import WeekDays from "../WeekDays/WeekDays";
 
 class Days extends Component {
   state = {
@@ -56,13 +57,9 @@ class Days extends Component {
   };
 
   handleFilter = (x) => {
-    return this.state.calendar
-      .filter((day) => {
-        return day.date === x;
-      })
-      .map((day) => {
-        return <li className="list-group-item">{day.eventName}</li>;
-      });
+    return this.state.calendar.filter((day) => {
+      return day.date === x;
+    });
   };
 
   handleOpenModal = (event) => {
@@ -80,6 +77,7 @@ class Days extends Component {
         "month"
       ),
     });
+    this.props.handleChangeNav(this.state.currentMoment);
   };
 
   render() {
@@ -91,41 +89,48 @@ class Days extends Component {
     let calendar = [];
     let day = startDay.clone().subtract(1, "day");
 
+    let auxArray = [];
+    let i = 0;
+
     while (day.isBefore(endDay, "day")) {
-      calendar.push(day.add(1, "day").clone().format("YYYY-MM-DD"));
+      if (i % 7 === 0) {
+        calendar.push(auxArray);
+        auxArray = [];
+      }
+      auxArray.push(day.add(1, "day").clone().format("YYYY-MM-DD"));
+      i++;
+    }
+
+    if (auxArray.length > 0) {
+      calendar.push(auxArray);
     }
 
     return (
-      <div className="container">
-        <div className="d-flex justify-content-between">
+      <div>
+        <div className="d-flex justify-content-between m-0">
           <button
-            className="btn btn-light border border-2 border-dark m-1"
+            className="btn btn-light border border-2 border-dark my-1 "
             id="-1"
             onClick={this.handleChangeMonth}
           >
             <i className="fas fa-chevron-left"></i> Previous month
           </button>
           <button
-            className="btn btn-light border border-2 border-dark m-1"
+            className="btn btn-light border border-2 border-dark my-1"
             id="1"
             onClick={this.handleChangeMonth}
           >
             Next month <i className="fas fa-chevron-right"></i>
           </button>
         </div>
-        <div className="row row-cols-6">
+        <div>
           {calendar.map((day) => {
             return (
-              <div
-                key={day}
-                id={day}
-                className="col days-border wd"
-                role="button"
-                onClick={this.handleOpenModal}
-              >
-                {day.slice(-2)}
-                <ul class="boxlist list-group">{this.handleFilter(day)}</ul>
-              </div>
+              <WeekDays
+                week={day}
+                handleOpenModal={this.handleOpenModal}
+                handleFilter={this.handleFilter}
+              />
             );
           })}
         </div>
