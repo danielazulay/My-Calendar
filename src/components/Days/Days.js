@@ -5,6 +5,8 @@ import NewEventModal from "../NewEventModal/NewEventModal";
 import axios from "axios";
 import ReactDOM from "react-dom";
 
+import "./Days.css";
+
 class Days extends Component {
   state = {
     showModal: false,
@@ -59,7 +61,7 @@ class Days extends Component {
         return day.date === x;
       })
       .map((day) => {
-        return  <li className="list-group-item" >{day.eventName}</li>;
+        return <li className="list-group-item">{day.eventName}</li>;
       });
   };
 
@@ -94,13 +96,21 @@ class Days extends Component {
     }
 
     return (
-      <div>
-        <div className="container">
-          <button id="-1" onClick={this.handleChangeMonth}>
-            Previous month
+      <div className="container">
+        <div className="d-flex justify-content-between">
+          <button
+            className="btn btn-light border border-2 border-dark m-1"
+            id="-1"
+            onClick={this.handleChangeMonth}
+          >
+            <i className="fas fa-chevron-left"></i> Previous month
           </button>
-          <button id="1" onClick={this.handleChangeMonth}>
-            Next month
+          <button
+            className="btn btn-light border border-2 border-dark m-1"
+            id="1"
+            onClick={this.handleChangeMonth}
+          >
+            Next month <i className="fas fa-chevron-right"></i>
           </button>
           <div className="row row-cols-6">
             {calendar.map((day) => {
@@ -113,13 +123,11 @@ class Days extends Component {
                   onClick={this.handleOpenModal}
                 >
                   {day.slice(-2)}
-            
-                  <ul className="boxlist list-group" >
-                  {this.handleFilter(day)}
-</ul>
-                  </div>
-                 
-            
+
+                  <ul className="boxlist list-group">
+                    {this.handleFilter(day)}
+                  </ul>
+                </div>
               );
             })}
           </div>
@@ -135,6 +143,33 @@ class Days extends Component {
             date={this.state.date}
           />
         </div>
+        <div className="row row-cols-6">
+          {calendar.map((day) => {
+            return (
+              <div
+                key={day}
+                id={day}
+                className="col days-border wd"
+                role="button"
+                onClick={this.handleOpenModal}
+              >
+                {day.slice(-2)}
+                <ul class="list-group">{this.handleFilter(day)}</ul>
+              </div>
+            );
+          })}
+        </div>
+        <NewEventModal
+          showModal={this.state.showModal}
+          handleCloseModal={this.handleCloseModal}
+          handleOpenModal={this.handleOpenModal}
+          handleChange={this.handleChange}
+          clickedDay={this.state.clickedDay}
+          eventName={this.state.eventName}
+          description={this.state.description}
+          handleSubmit={this.handleSubmit}
+          date={this.state.date}
+        />
       </div>
     );
   }

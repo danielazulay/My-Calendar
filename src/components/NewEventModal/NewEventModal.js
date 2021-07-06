@@ -1,27 +1,24 @@
 import React from "react";
-import Modal from "react-modal";
+import ReactModal from "react-modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 
-Modal.setAppElement("#root");
+ReactModal.setAppElement("#root");
 
 class NewEventModal extends Component {
-
-
-
-
-
   render() {
     console.log(this.props.clickedDay);
     return (
       <div>
-        <Modal
+        <ReactModal
           isOpen={this.props.showModal}
           onRequestClose={this.props.handleCloseModal}
           contentLabel="New Event Modal"
         >
+          <h5>New Event</h5>
+
           <div className="form-group">
-            <form >
+            <form>
               <input
                 className="form-control mt-3"
                 type="text"
@@ -29,6 +26,7 @@ class NewEventModal extends Component {
                 name="eventName"
                 value={this.props.eventName}
                 onChange={this.props.handleChange}
+                required
               />
               <input
                 className="form-control mt-2"
@@ -37,6 +35,7 @@ class NewEventModal extends Component {
                 name="description"
                 value={this.props.description}
                 onChange={this.props.handleChange}
+                required
               />
               <input
                 className="form-control mt-2"
@@ -45,22 +44,27 @@ class NewEventModal extends Component {
                 name="date"
                 value={this.props.clickedDay}
                 onChange={this.props.handleChange}
+                required
               />
 
-              <div className="form-group">
-                <button type="submit" className="btn btn-primary mt-3" onClick={this.props.handleSubmit} >
+              <div className="form-group d-grid gap-2 d-md-flex justify-content-md-end">
+                <button
+                  type="submit"
+                  className="btn btn-primary mt-3"
+                  onClick={this.props.handleSubmit}
+                >
                   Save
                 </button>
                 <button
                   onClick={this.props.handleCloseModal}
-                  className="btn btn-danger mt-3"
+                  className="btn btn-secondary mt-3"
                 >
                   Close
                 </button>
               </div>
             </form>
           </div>
-        </Modal>
+        </ReactModal>
       </div>
     );
   }

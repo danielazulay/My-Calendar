@@ -2,6 +2,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
 
 import Agenda from "../Agenda/Agenda";
+import "../Days/Days.css";
 
 function App() {
   return (
