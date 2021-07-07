@@ -7,7 +7,7 @@ ReactModal.setAppElement("#root");
 
 class NewEventModal extends Component {
   render() {
-    console.log(this.props.clickedDay);
+   
     return (
       <div>
         <ReactModal

@@ -3,11 +3,12 @@ import ReactModal from "react-modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 
+
 ReactModal.setAppElement("#root");
 
 class EditModal extends Component {
   render() {
-
+    console.log("this.props.clickedDay");
     return (
       <div>
         <ReactModal
@@ -61,8 +62,10 @@ class EditModal extends Component {
                 >
                   Close
                 </button>
+
+              
                 <button
-                  onClick={this.props.handleCloseModal}
+                 
                   className="btn btn-secondary mt-3"
                 >
                  Delete
