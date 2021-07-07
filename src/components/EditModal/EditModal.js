@@ -5,65 +5,69 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./EditModal.css";
-import {browserHistory} from 'react-router'
+
 ReactModal.setAppElement("#root");
 
 class EditModal extends Component {
+  state = {
+    eventName: this.props.eventName,
+    description: this.props.description,
+    date: this.props.date,
+  };
 
-  state={
-    eventName:this.props.eventName,
-    description:this.props.description,
-    date:this.props.date
-   
-  
-  }
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
-  handleChange=(event)=>{
+  componentDidMount = (prevProps) => {
+    const id = this.props.clickedDay;
 
-    this.setState({[event.target.name]:event.target.value})
-  }
+    axios
+      .delete(`https://ironrest.herokuapp.com/calendar/${id}`)
+      .then((response) => {
+        this.props.handleCloseModalEdit();
+      })
+      .catch((err) => console.log(err));
+  };
 
-  
+  componentDidUpdate = async (prevProps) => {
+    if (prevProps.clickedDay !== this.props.clickedDay) {
+      const id = this.props.clickedDay;
+      try {
+        const response = await axios.get(
+          `https://ironrest.herokuapp.com/calendar/${id}`
+        );
 
-  componentDidUpdate  = async (prevProps) => {
-    if(prevProps.clickedDay!==this.props.clickedDay){
-    console.log(this.props)
-    const id = this.props.clickedDay
-    try {
-      const response = await axios.get(
-        `https://ironrest.herokuapp.com/calendar/${id}`
-      );
-
-      this.setState({...response.data})
-   
-    } catch (err) {
-      console.log(err);
-    }
+        this.setState({ ...response.data });
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
-  handleSubmit=async(event)=>{
+  handleSubmit = async (event) => {
     event.preventDefault();
-    const id = this.props.clickedDay
-    
+    const id = this.props.clickedDay;
+
     try {
       const response = await axios.put(
-        `https://ironrest.herokuapp.com/calendar/${id}`, {eventName:this.state.eventName,
-        description:this.state.description,
-        date:this.state.date} );
-        this.props.handleCloseModalEdit()
-     console.log(response)
+        `https://ironrest.herokuapp.com/calendar/${id}`,
+        {
+          eventName: this.state.eventName,
+          description: this.state.description,
+          date: this.state.date,
+        }
+      );
+      this.props.handleCloseModalEdit();
+      console.log(response);
     } catch (err) {
       console.log(err);
     }
-
-  }
-
-
+  };
 
   render() {
-  console.log(this.props.clickedDay)
-     return (
+    console.log(this.props.clickedDay);
+    return (
       <div>
         <ReactModal
           isOpen={this.props.showModalEdit}
@@ -75,7 +79,7 @@ class EditModal extends Component {
           <h5>Edit event</h5>
 
           <div className="form-group">
-            <form onSubmit={this.handleSubmit}> 
+            <form onSubmit={this.handleSubmit}>
               <input
                 className="form-control mt-3"
                 type="text"
@@ -105,30 +109,31 @@ class EditModal extends Component {
               />
 
               <div className="form-group d-grid gap-2 d-md-flex justify-content-md-end">
-                <button
-                  type="submit"
-                  className="btn btn-primary mt-3"
-                  
-                >
+                <button type="submit" className="btn btn-primary mt-3">
                   Save
                 </button>
                 <button
-                 
                   className="btn btn-secondary mt-3"
                   onClick={this.props.handleCloseModalEdit}
                 >
                   Close
                 </button>
 
-                <Link
+                {/*   <Link
                   to={`/delete-eventDay/${this.props.clickedDay}`}
                   title="Delete eventDay"
-                  
+                 
+                > */}
+
+                <button
+                  className="btn btn-danger mt-3"
+                  onClick={this.componentDidMount}
                 >
-             
-                  <button className="btn btn-danger mt-3"
-                 > Delete</button>
-                </Link>
+               
+                  Delete
+                </button>
+
+                {/*     </Link> */}
               </div>
             </form>
           </div>
@@ -136,7 +141,6 @@ class EditModal extends Component {
       </div>
     );
   }
-
 }
 
 export default EditModal;

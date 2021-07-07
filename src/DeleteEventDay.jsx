@@ -1,4 +1,4 @@
-import { Component } from "react";
+/* import { Component } from "react";
 import axios from "axios";
 
 // D do CRUD (DELETE): Deleta um registro específico
@@ -10,18 +10,14 @@ class DeleteEventDay extends Component {
     axios
       .delete(`https://ironrest.herokuapp.com/calendar/${id}`)
       .then((response) => {
-      
+
      
       })
       .catch((err) => console.log(err));
   };
 
   
-  componentDidUpdate = (prevProps) => {
-    if (this.props.match.params.id !== prevProps.match.params.id) {
-      this.props.history.push('/')
-    }
-  };
+
 
   render() {
      
@@ -29,4 +25,4 @@ class DeleteEventDay extends Component {
   }
 }
 
-export default DeleteEventDay;
+export default DeleteEventDay; */
