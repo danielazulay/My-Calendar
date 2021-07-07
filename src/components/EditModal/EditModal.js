@@ -4,19 +4,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 
+import "./EditModal.css";
+
 ReactModal.setAppElement("#root");
 
 class EditModal extends Component {
   render() {
-    console.log( this.props.clickedDay);
     return (
       <div>
         <ReactModal
           isOpen={this.props.showModalEdit}
           onRequestClose={this.props.handleCloseModalEdit}
           contentLabel="Edit Event Modal"
+          className="Modal"
+          overlayClassName="Overlay"
         >
-          <h5>Edit Event</h5>
+          <h5>Edit event</h5>
 
           <div className="form-group">
             <form>
@@ -27,7 +30,7 @@ class EditModal extends Component {
                 name="eventName"
                 value={this.props.eventName}
                 onChange={this.props.handleChange}
-                required
+                // required
               />
               <input
                 className="form-control mt-2"
@@ -36,7 +39,7 @@ class EditModal extends Component {
                 name="description"
                 value={this.props.description}
                 onChange={this.props.handleChange}
-                required
+                // required
               />
               <input
                 className="form-control mt-2"
@@ -45,7 +48,7 @@ class EditModal extends Component {
                 name="date"
                 value={this.props.clickedDay}
                 onChange={this.props.handleChange}
-                required
+                // required
               />
 
               <div className="form-group d-grid gap-2 d-md-flex justify-content-md-end">
@@ -69,10 +72,11 @@ class EditModal extends Component {
                     to={`/delete-eventDay/${this.props.clickedDay}`}
                     title="Delete eventDay"
                     className="text-danger"
-                  >  <button
+                  >  <button 
                   className="btn btn-secondary mt-3"                
                >  Delete</button></Link>
               
+               
               </div>
             </form>
           </div>

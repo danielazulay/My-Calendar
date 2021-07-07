@@ -1,18 +1,18 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 import moment from "moment";
-import NewEventModal from "../NewEventModal/NewEventModal";
-import EditModal from "../Agenda/EditModal";
 import axios from "axios";
 
+import NewEventModal from "../NewEventModal/NewEventModal";
+import EditModal from "../EditModal/EditModal";
+import WeekDays from "../WeekDays/WeekDays";
 
 import "./Days.css";
-import WeekDays from "../WeekDays/WeekDays";
 
 class Days extends Component {
   state = {
     showModal: false,
-    showModalEdit:false,
+    showModalEdit: false,
     clickedDay: "",
     currentMoment: moment(),
     eventName: "",
@@ -28,8 +28,6 @@ class Days extends Component {
     console.log(event.target.value);
   };
 
-
-
   handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -41,7 +39,7 @@ class Days extends Component {
           date: this.state.clickedDay,
         }
       );
-      this.componentDidMount()
+      this.componentDidMount();
       this.handleCloseModal();
     } catch (err) {
       console.log(err);
@@ -67,6 +65,8 @@ class Days extends Component {
     });
   };
 
+  // new event modal
+
   handleOpenModal = (event) => {
     this.setState({ showModal: true, clickedDay: event.target.id });
   };
@@ -85,7 +85,6 @@ class Days extends Component {
   handleCloseModalEdit = (event) => {
     this.setState({ showModalEdit: false });
   };
-
 
   handleChangeMonth = (event) => {
     this.setState({
@@ -152,6 +151,7 @@ class Days extends Component {
             );
           })}
         </div>
+
         <NewEventModal
           showModal={this.state.showModal}
           handleCloseModal={this.handleCloseModal}
@@ -164,7 +164,7 @@ class Days extends Component {
           date={this.state.date}
         />
 
-<EditModal
+        <EditModal
           showModalEdit={this.state.showModalEdit}
           handleCloseModalEdit={this.handleCloseModalEdit}
           handleOpenModalEdit={this.handleOpenModalEdit}
