@@ -3,6 +3,8 @@ import ReactModal from "react-modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 
+import "./NewEventModal.css";
+
 ReactModal.setAppElement("#root");
 
 class NewEventModal extends Component {
@@ -14,6 +16,8 @@ class NewEventModal extends Component {
           isOpen={this.props.showModal}
           onRequestClose={this.props.handleCloseModal}
           contentLabel="New Event Modal"
+          className="Modal"
+          overlayClassName="Overlay"
         >
           <h5>New Event</h5>
 
