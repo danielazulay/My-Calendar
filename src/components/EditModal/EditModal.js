@@ -68,10 +68,9 @@ class EditModal extends Component {
 
                 <Link
                   to={`/delete-eventDay/${this.props.clickedDay}`}
-                  title="Delete eventDay"
+                  title="Delete event"
                 >
-                  {" "}
-                  <button className="btn btn-danger mt-3"> Delete</button>
+                  <button className="btn btn-danger mt-3">Delete</button>
                 </Link>
               </div>
             </form>

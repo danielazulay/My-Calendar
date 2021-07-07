@@ -1,8 +1,6 @@
 import { Component } from "react";
 import axios from "axios";
 
-// D do CRUD (DELETE): Deleta um registro específico
-
 class DeleteEventDay extends Component {
   componentDidMount = () => {
     const id = this.props.match.params.id;
@@ -17,7 +15,7 @@ class DeleteEventDay extends Component {
   };
 
   render() {
-      console.log(this.props.match.params.id)
+    // console.log(this.props.match.params.id);
     return <div>Deleting...</div>;
   }
 }

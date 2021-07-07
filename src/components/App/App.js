@@ -3,7 +3,7 @@ import "./App.css";
 
 import Agenda from "../Agenda/Agenda";
 import "../Days/Days.css";
-import DeleteEventDay from "../../DeleteEventDay";
+import DeleteEventDay from "../DeleteEvent/DeleteEventDay";
 
 function App() {
   return (
