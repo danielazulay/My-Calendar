@@ -10,14 +10,21 @@ class DeleteEventDay extends Component {
     axios
       .delete(`https://ironrest.herokuapp.com/calendar/${id}`)
       .then((response) => {
-        console.log(response);
-        this.props.history.push("/");
+      
+     
       })
       .catch((err) => console.log(err));
   };
 
+  
+  componentDidUpdate = (prevProps) => {
+    if (this.props.match.params.id !== prevProps.match.params.id) {
+      this.props.history.push('/')
+    }
+  };
+
   render() {
-      console.log(this.props.match.params.id)
+     
     return <div>Deleting...</div>;
   }
 }

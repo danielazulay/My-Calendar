@@ -1,19 +1,22 @@
-// import { BrowserRouter, Route } from "react-router-dom";
-// import './components/App/App.css';
-// import DeleteEventDay from './DeleteEventDay.jsx'
-// import Agenda from './components/Agenda/Agenda'
+import { BrowserRouter, Route } from "react-router-dom";
+import './components/App/App.css';
+import DeleteEventDay from './DeleteEventDay.jsx'
+import Agenda from './components/Agenda/Agenda'
+/* import EditModal from '../src/components/EditModal/EditModal' */
 
-// function App() {
-//   return (
+function App() {
+  return (
+   
+    <BrowserRouter>
+   
 
-//     <BrowserRouter>
+    <Route path="/" component={Agenda} />
+    <Route path="/delete-eventDay/:id" component={DeleteEventDay} />
+{/*   <Route path="/Edit-event/:id" component={EditModal} /> */}
+   
+    </BrowserRouter>
 
-//     <Route path="/" component={Agenda} />
-//     <Route path="/delete-eventDay/:id" component={DeleteEventDay} />
+  );
+}
 
-//     </BrowserRouter>
-
-//   );
-// }
-
-// export default App;
+export default App;
