@@ -1,0 +1,22 @@
+.Modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 10px 10px 8px #888888;
+  padding: 20px;
+  height: 35vh;
+  width: 30vw;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(2px);
+}

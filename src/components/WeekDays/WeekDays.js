@@ -19,8 +19,6 @@ function WeekDays(props) {
                 let randomB = Math.floor(Math.random() * 255);
                 return (
                   <button
-                   
-                 
                     style={{
                       backgroundColor: `rgb(${randomR},${randomG},${randomB})`,
                     }}
