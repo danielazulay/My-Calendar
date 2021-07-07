@@ -2,13 +2,13 @@ import React from "react";
 import ReactModal from "react-modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
-
+import { Link } from "react-router-dom";
 
 ReactModal.setAppElement("#root");
 
 class EditModal extends Component {
   render() {
-    console.log("this.props.clickedDay");
+    console.log( this.props.clickedDay);
     return (
       <div>
         <ReactModal
@@ -64,12 +64,15 @@ class EditModal extends Component {
                 </button>
 
               
-                <button
-                 
-                  className="btn btn-secondary mt-3"
-                >
-                 Delete
-                </button>
+              
+              <Link
+                    to={`/delete-eventDay/${this.props.clickedDay}`}
+                    title="Delete eventDay"
+                    className="text-danger"
+                  >  <button
+                  className="btn btn-secondary mt-3"                
+               >  Delete</button></Link>
+              
               </div>
             </form>
           </div>

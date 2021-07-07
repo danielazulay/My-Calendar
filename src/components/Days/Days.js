@@ -168,7 +168,7 @@ class Days extends Component {
           showModalEdit={this.state.showModalEdit}
           handleCloseModalEdit={this.handleCloseModalEdit}
           handleOpenModalEdit={this.handleOpenModalEdit}
-  
+          
           handleChange={this.handleChange}
           clickedDay={this.state.clickedDay}
           eventName={this.state.eventName}
