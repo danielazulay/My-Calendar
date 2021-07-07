@@ -3,11 +3,13 @@ import "./App.css";
 
 import Agenda from "../Agenda/Agenda";
 import "../Days/Days.css";
+import DeleteEventDay from "../../DeleteEventDay";
 
 function App() {
   return (
     <BrowserRouter>
       <Route path="/" component={Agenda} />
+      <Route path="/delete-eventDay/:id" component={DeleteEventDay} />
     </BrowserRouter>
   );
 }

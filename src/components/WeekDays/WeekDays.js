@@ -2,7 +2,6 @@ function WeekDays(props) {
   return (
     <div className="row">
       {props.week.map((day) => {
-        
         return (
           <div
             key={day}
@@ -15,20 +14,19 @@ function WeekDays(props) {
             <div>{day.slice(-2)}</div>
             <div>
               {props.handleFilter(day).map((eventDay) => {
-              
                 let randomR = Math.floor(Math.random() * 255);
                 let randomG = Math.floor(Math.random() * 255);
                 let randomB = Math.floor(Math.random() * 255);
                 return (
                   <button
+                    id={eventDay._id}
                     style={{
                       backgroundColor: `rgb(${randomR},${randomG},${randomB})`,
                     }}
                     className="boxlist btn m-1"
                     onClick={props.handleOpenModalEdit}
                   >
-                  {eventDay.eventName}
-     
+                    {eventDay.eventName}
                   </button>
                 );
               })}
