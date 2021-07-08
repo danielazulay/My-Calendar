@@ -19,7 +19,7 @@ class Days extends Component {
     description: "",
     date: "",
     calendar: [],
-    type:""
+    type: "",
   };
 
   handleChange = (event) => {
@@ -34,7 +34,7 @@ class Days extends Component {
         eventName: this.state.eventName,
         description: this.state.description,
         date: this.state.clickedDay,
-        type:this.state.type
+        type: this.state.type,
       });
       this.componentDidMount();
       this.handleCloseModal();
@@ -133,7 +133,11 @@ class Days extends Component {
                 id="-1"
                 onClick={this.handleChangeMonth}
               >
-                <i className="fas fa-chevron-left"></i>
+                <i
+                  id="-1"
+                  onClick={this.handleChangeMonth}
+                  lassName="fas fa-chevron-left"
+                ></i>
               </button>
               <span className="font">
                 {this.props.startDay.format("MMMM YYYY")}
@@ -143,7 +147,11 @@ class Days extends Component {
                 id="1"
                 onClick={this.handleChangeMonth}
               >
-                <i className="fas fa-chevron-right"></i>
+                <i
+                  id="1"
+                  onClick={this.handleChangeMonth}
+                  className="fas fa-chevron-right"
+                ></i>
               </button>
             </Link>
           </nav>
@@ -197,7 +205,6 @@ class Days extends Component {
           handleSubmit={this.handleSubmit}
           date={this.state.date}
           handleDraw={this.handleDraw}
-          
         />
       </div>
     );
