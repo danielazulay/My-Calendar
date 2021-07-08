@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
 import moment from "moment";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 import NewEventModal from "../NewEventModal/NewEventModal";
 import EditModal from "../EditModal/EditModal";
 import WeekDays from "../WeekDays/WeekDays";
@@ -120,23 +120,41 @@ class Days extends Component {
 
     return (
       <div>
-        <div className="d-flex justify-content-between m-0">
-          <button
-            className="btn btn-light border border-2 border-dark my-1 "
-            id="-1"
-            onClick={this.handleChangeMonth}
-          >
-            <i className="fas fa-chevron-left"></i> Previous month
-          </button>
-          <button
-            className="btn btn-light border border-2 border-dark my-1"
-            id="1"
-            onClick={this.handleChangeMonth}
-          >
-            Next month <i className="fas fa-chevron-right"></i>
-          </button>
+        <div className="row">
+          <nav className="navbar navbar-dark mb-3">
+            <Link to="/" className="navbar-brand ps-5">
+              {"My personal calendar"}
+            </Link>
+            <Link to="/" className="navbar-brand me-5">
+              <button
+                className="btn my-1 ms-1"
+                id="-1"
+                onClick={this.handleChangeMonth}
+              >
+                <i className="fas fa-chevron-left"></i>
+              </button>
+              {this.props.startDay.format("MMMM YYYY")}
+              <button
+                className="btn ms-1 my-1"
+                id="1"
+                onClick={this.handleChangeMonth}
+              >
+                <i className="fas fa-chevron-right"></i>
+              </button>
+            </Link>
+          </nav>
         </div>
-        <div>
+
+        <div className="d-flex justify-content-evenly align m-0">
+          <p>SUNDAY</p>
+          <p>MONDAY</p>
+          <p>TUESDAY</p>
+          <p>WEDNESDAY</p>
+          <p>THURSDAY</p>
+          <p>FRIDAY</p>
+          <p>SATURDAY</p>
+        </div>
+        <div className="container p-0">
           {calendar.map((day) => {
             return (
               <WeekDays

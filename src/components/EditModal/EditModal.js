@@ -2,7 +2,6 @@ import React from "react";
 import ReactModal from "react-modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
-
 import axios from "axios";
 import "./EditModal.css";
 
@@ -68,7 +67,6 @@ class EditModal extends Component {
   };
 
   render() {
-    console.log(this.props.clickedDay);
     return (
       <div>
         <ReactModal
@@ -89,7 +87,6 @@ class EditModal extends Component {
                 name="eventName"
                 value={this.state.eventName}
                 onChange={this.handleChange}
-                // required
               />
               <input
                 className="form-control mt-2"
@@ -98,7 +95,6 @@ class EditModal extends Component {
                 name="description"
                 value={this.state.description}
                 onChange={this.handleChange}
-                // required
               />
               <input
                 className="form-control mt-2"
@@ -107,7 +103,6 @@ class EditModal extends Component {
                 name="date"
                 value={this.state.date}
                 onChange={this.handleChange}
-                // required
               />
 
               <div className="form-group d-grid gap-2 d-md-flex justify-content-md-end">
