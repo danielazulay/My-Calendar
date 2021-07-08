@@ -3,6 +3,8 @@ import moment from "moment";
 import "./WeekDays.css";
 
 function WeekDays(props) {
+  const colors={Task:'#f6f05e',Reminder:'#8b88e5',Work:'#da7ad7',Fun:'#6ea0f3',Travel:'#96e762'}
+
   return (
     <div className="row">
       {props.week.map((day) => {
@@ -22,16 +24,13 @@ function WeekDays(props) {
             <div>{day.slice(-2)}</div>
             <div>
               {props.handleFilter(day).map((eventDay) => {
-                let randomR = Math.floor(Math.random() * 255);
-                let randomG = Math.floor(Math.random() * 255);
-                let randomB = Math.floor(Math.random() * 255);
 
                 return (
                   <button
                     key={eventDay._id}
                     id={eventDay._id}
                     style={{
-                      backgroundColor: `rgb(${randomR},${randomG},${randomB})`,
+                      backgroundColor: colors[eventDay.type]
                     }}
                     className="boxlist btn m-1"
                     onClick={props.handleOpenModalEdit}

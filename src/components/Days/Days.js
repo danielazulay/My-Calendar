@@ -19,6 +19,7 @@ class Days extends Component {
     description: "",
     date: "",
     calendar: [],
+    type:""
   };
 
   handleChange = (event) => {
@@ -33,6 +34,7 @@ class Days extends Component {
         eventName: this.state.eventName,
         description: this.state.description,
         date: this.state.clickedDay,
+        type:this.state.type
       });
       this.componentDidMount();
       this.handleCloseModal();
@@ -166,6 +168,7 @@ class Days extends Component {
                 handleFilter={this.handleFilter}
                 handleOpenModalEdit={this.handleOpenModalEdit}
                 currentMoment={this.state.currentMoment}
+                type={this.state.type}
               />
             );
           })}
@@ -181,6 +184,7 @@ class Days extends Component {
           description={this.state.description}
           handleSubmit={this.handleSubmit}
           date={this.state.date}
+          type={this.state.type}
         />
 
         <EditModal
@@ -193,6 +197,7 @@ class Days extends Component {
           handleSubmit={this.handleSubmit}
           date={this.state.date}
           handleDraw={this.handleDraw}
+          
         />
       </div>
     );

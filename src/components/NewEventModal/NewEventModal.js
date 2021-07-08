@@ -50,6 +50,14 @@ class NewEventModal extends Component {
                 required
               />
 
+<select className="form-select" aria-label="Default select example" name="type" value={this.props.type} onChange={this.props.handleChange}>
+  <option defaultValue>Open this select menu</option>
+  <option value="Task">Task</option>
+  <option value="Reminder">Reminder</option>
+  <option value="Work">Work</option>
+  <option value="Fun">Fun</option>
+  <option value="Travel">Travel</option>
+</select>
               <div className="form-group d-grid gap-2 d-md-flex justify-content-md-end">
                 <button type="submit" className="btn btn-primary mt-3">
                   Save
@@ -60,6 +68,8 @@ class NewEventModal extends Component {
                 >
                   Close
                 </button>
+
+                
               </div>
             </form>
           </div>
