@@ -19,7 +19,7 @@ class EditModal extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  componentDidMount = (prevProps) => {
+  handleDelete= (prevProps) => {
     const id = this.props.clickedDay;
 
     axios
@@ -128,7 +128,7 @@ class EditModal extends Component {
 
                 <button
                   className="btn btn-danger mt-3"
-                  onClick={this.componentDidMount}
+                  onClick={this.handleDelete}
                   
                 >
                   Delete
