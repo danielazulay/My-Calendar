@@ -19,13 +19,10 @@ class Days extends Component {
     description: "",
     date: "",
     calendar: [],
- 
   };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
-
-   
   };
 
   handleSubmit = async (event) => {
@@ -58,7 +55,6 @@ class Days extends Component {
     }
   };
 
-
   handleFilter = (x) => {
     return this.state.calendar.filter((day) => {
       return day.date === x;
@@ -79,11 +75,10 @@ class Days extends Component {
 
   handleOpenModalEdit = (event) => {
     this.setState({ showModalEdit: true, clickedDay: event.target.id });
-
   };
 
   handleCloseModalEdit = (event) => {
-    this.setState({ showModalEdit: false });
+    this.setState({ showModalEdit: false, showModal: false });
   };
 
   handleChangeMonth = (event) => {
@@ -168,15 +163,12 @@ class Days extends Component {
           showModalEdit={this.state.showModalEdit}
           handleCloseModalEdit={this.handleCloseModalEdit}
           handleOpenModalEdit={this.handleOpenModalEdit}
-        
-          
           clickedDay={this.state.clickedDay}
           eventName={this.state.eventName}
           description={this.state.description}
           handleSubmit={this.handleSubmit}
           date={this.state.date}
         />
-       
       </div>
     );
   }

@@ -129,7 +129,6 @@ class EditModal extends Component {
                   className="btn btn-danger mt-3"
                   onClick={this.componentDidMount}
                 >
-               
                   Delete
                 </button>
 
