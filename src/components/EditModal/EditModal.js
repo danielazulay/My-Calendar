@@ -26,6 +26,7 @@ class EditModal extends Component {
       .delete(`https://ironrest.herokuapp.com/calendar/${id}`)
       .then((response) => {
         this.props.handleCloseModalEdit();
+       
       })
       .catch((err) => console.log(err));
   };
@@ -128,6 +129,7 @@ class EditModal extends Component {
                 <button
                   className="btn btn-danger mt-3"
                   onClick={this.componentDidMount}
+                  
                 >
                
                   Delete
