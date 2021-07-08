@@ -8,7 +8,6 @@ function App() {
   return (
     <BrowserRouter>
       <Route path="/" component={Agenda} />
-      {/* <Route path="/delete-eventDay/:id" component={DeleteEventDay} /> */}
     </BrowserRouter>
   );
 }
