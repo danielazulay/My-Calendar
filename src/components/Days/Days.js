@@ -78,7 +78,7 @@ class Days extends Component {
   };
 
   handleCloseModalEdit = (event) => {
-    this.setState({ showModalEdit: false });
+    this.setState({ showModalEdit: false, showModal: false });
   };
 
   handleChangeMonth = (event) => {
