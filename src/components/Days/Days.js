@@ -121,9 +121,9 @@ class Days extends Component {
     return (
       <div>
         <div className="row">
-          <nav className="navbar navbar-dark mb-3">
+          <nav className="navbar navbar-dark font mb-3">
             <Link to="/" className="navbar-brand ps-5">
-              {"My personal calendar"}
+              {"MY CALENDAR"}
             </Link>
             <Link to="/" className="navbar-brand me-5">
               <button
@@ -133,7 +133,9 @@ class Days extends Component {
               >
                 <i className="fas fa-chevron-left"></i>
               </button>
-              {this.props.startDay.format("MMMM YYYY")}
+              <span className="font">
+                {this.props.startDay.format("MMMM YYYY")}
+              </span>
               <button
                 className="btn ms-1 my-1"
                 id="1"
@@ -145,7 +147,7 @@ class Days extends Component {
           </nav>
         </div>
 
-        <div className="d-flex justify-content-evenly align m-0">
+        <div className="d-flex justify-content-evenly align m-0 week-days">
           <p>SUNDAY</p>
           <p>MONDAY</p>
           <p>TUESDAY</p>

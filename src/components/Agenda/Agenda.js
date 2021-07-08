@@ -15,12 +15,10 @@ class Agenda extends Component {
   render() {
     return (
       <div>
-        <div>
-          <Days
-            handleChangeNav={this.handleChangeMonth}
-            startDay={this.state.startDay}
-          />
-        </div>
+        <Days
+          handleChangeNav={this.handleChangeMonth}
+          startDay={this.state.startDay}
+        />
       </div>
     );
   }

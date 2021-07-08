@@ -1,5 +1,7 @@
 import moment from "moment";
 
+import "./WeekDays.css";
+
 function WeekDays(props) {
   return (
     <div className="row">
