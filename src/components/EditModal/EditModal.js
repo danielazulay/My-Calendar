@@ -2,7 +2,6 @@ import React from "react";
 import ReactModal from "react-modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import "./EditModal.css";
 
@@ -19,14 +18,13 @@ class EditModal extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleDelete= (prevProps) => {
+  handleDelete = (prevProps) => {
     const id = this.props.clickedDay;
 
     axios
       .delete(`https://ironrest.herokuapp.com/calendar/${id}`)
       .then((response) => {
         this.props.handleCloseModalEdit();
-       
       })
       .catch((err) => console.log(err));
   };
@@ -67,7 +65,6 @@ class EditModal extends Component {
   };
 
   render() {
-    console.log(this.props.clickedDay);
     return (
       <div>
         <ReactModal
@@ -88,7 +85,6 @@ class EditModal extends Component {
                 name="eventName"
                 value={this.state.eventName}
                 onChange={this.handleChange}
-                // required
               />
               <input
                 className="form-control mt-2"
@@ -97,7 +93,6 @@ class EditModal extends Component {
                 name="description"
                 value={this.state.description}
                 onChange={this.handleChange}
-                // required
               />
               <input
                 className="form-control mt-2"
@@ -106,7 +101,6 @@ class EditModal extends Component {
                 name="date"
                 value={this.state.date}
                 onChange={this.handleChange}
-                // required
               />
 
               <div className="form-group d-grid gap-2 d-md-flex justify-content-md-end">
@@ -129,7 +123,6 @@ class EditModal extends Component {
                 <button
                   className="btn btn-danger mt-3"
                   onClick={this.handleDelete}
-                  
                 >
                   Delete
                 </button>
