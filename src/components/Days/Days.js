@@ -27,7 +27,10 @@ class Days extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
+
+
       const response = await axios.post(
         "https://ironrest.herokuapp.com/calendar",
         {
@@ -41,6 +44,7 @@ class Days extends Component {
     } catch (err) {
       console.log(err);
     }
+
   };
 
   componentDidMount = async () => {

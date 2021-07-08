@@ -2,7 +2,7 @@ import React from "react";
 import ReactModal from "react-modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react";
-import { Link } from "react-router-dom";
+
 import axios from "axios";
 import "./EditModal.css";
 
