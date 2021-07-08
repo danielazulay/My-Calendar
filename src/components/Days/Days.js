@@ -29,30 +29,23 @@ class Days extends Component {
     event.preventDefault();
 
     try {
-
-
-      const response = await axios.post(
-        "https://ironrest.herokuapp.com/calendar",
-        {
-          eventName: this.state.eventName,
-          description: this.state.description,
-          date: this.state.clickedDay,
-        }
-      );
+      await axios.post("https://ironrest.herokuapp.com/calendar", {
+        eventName: this.state.eventName,
+        description: this.state.description,
+        date: this.state.clickedDay,
+      });
       this.componentDidMount();
       this.handleCloseModal();
     } catch (err) {
       console.log(err);
     }
-
   };
 
   componentDidMount = async () => {
-   this.handleDraw()
+    this.handleDraw();
   };
 
-  handleDraw=async ()=>{
-
+  handleDraw = async () => {
     try {
       const response = await axios.get(
         "https://ironrest.herokuapp.com/calendar"
@@ -62,7 +55,7 @@ class Days extends Component {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   handleFilter = (x) => {
     return this.state.calendar.filter((day) => {
@@ -147,6 +140,7 @@ class Days extends Component {
           {calendar.map((day) => {
             return (
               <WeekDays
+                key={day}
                 week={day}
                 handleOpenModal={this.handleOpenModal}
                 handleFilter={this.handleFilter}

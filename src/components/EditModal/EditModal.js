@@ -19,14 +19,14 @@ class EditModal extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleDelete= (prevProps) => {
+  handleDelete = (prevProps) => {
     const id = this.props.clickedDay;
 
     axios
       .delete(`https://ironrest.herokuapp.com/calendar/${id}`)
       .then((response) => {
         this.props.handleCloseModalEdit();
-       this.props.handleDraw()
+        this.props.handleDraw();
       })
       .catch((err) => console.log(err));
   };
@@ -40,7 +40,6 @@ class EditModal extends Component {
         );
 
         this.setState({ ...response.data });
-        
       } catch (err) {
         console.log(err);
       }
@@ -61,7 +60,7 @@ class EditModal extends Component {
         }
       );
       this.props.handleCloseModalEdit();
-      this.props.handleDraw()
+      this.props.handleDraw();
       console.log(response);
     } catch (err) {
       console.log(err);
@@ -131,7 +130,6 @@ class EditModal extends Component {
                 <button
                   className="btn btn-danger mt-3"
                   onClick={this.handleDelete}
-                  
                 >
                   Delete
                 </button>

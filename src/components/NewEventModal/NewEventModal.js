@@ -21,7 +21,7 @@ class NewEventModal extends Component {
           <h5>New Event</h5>
 
           <div className="form-group">
-            <form  onSubmit={this.props.handleSubmit}>
+            <form onSubmit={this.props.handleSubmit}>
               <input
                 className="form-control mt-3"
                 type="text"
@@ -51,11 +51,7 @@ class NewEventModal extends Component {
               />
 
               <div className="form-group d-grid gap-2 d-md-flex justify-content-md-end">
-                <button
-                  type="submit"
-                  className="btn btn-primary mt-3"
-                 
-                >
+                <button type="submit" className="btn btn-primary mt-3">
                   Save
                 </button>
                 <button

@@ -1,5 +1,4 @@
 import moment from "moment";
-import { Link } from "react-router-dom";
 
 function WeekDays(props) {
   return (
@@ -12,7 +11,11 @@ function WeekDays(props) {
             role="button"
             onClick={props.handleOpenModal}
             style={{ overflowY: "scroll" }}
-            className={moment(day).isSame(props.currentMoment,"month")? "col days-border":"col days-border gray"}
+            className={
+              moment(day).isSame(props.currentMoment, "month")
+                ? "col days-border"
+                : "col days-border gray"
+            }
           >
             <div>{day.slice(-2)}</div>
             <div>
@@ -20,21 +23,19 @@ function WeekDays(props) {
                 let randomR = Math.floor(Math.random() * 255);
                 let randomG = Math.floor(Math.random() * 255);
                 let randomB = Math.floor(Math.random() * 255);
-   
+
                 return (
-        
-                 
                   <button
-                    id={eventDay._id}                 
+                    key={eventDay._id}
+                    id={eventDay._id}
                     style={{
                       backgroundColor: `rgb(${randomR},${randomG},${randomB})`,
                     }}
                     className="boxlist btn m-1"
-                   onClick={props.handleOpenModalEdit}
+                    onClick={props.handleOpenModalEdit}
                   >
                     {eventDay.eventName}
                   </button>
-             
                 );
               })}
             </div>
