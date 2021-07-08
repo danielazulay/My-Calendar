@@ -6,7 +6,9 @@
 }
 
 .gray {
-  background-color: #dcdcdc;
+  /* background-color: #dcdcdc;
+   */
+  background-color: black;
   opacity: 50%;
   color: grey;
 }
