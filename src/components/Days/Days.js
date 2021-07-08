@@ -23,8 +23,6 @@ class Days extends Component {
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
-
-    // console.log(event.target.value);
   };
 
   handleSubmit = async (event) => {
@@ -77,7 +75,6 @@ class Days extends Component {
 
   handleOpenModalEdit = (event) => {
     this.setState({ showModalEdit: true, clickedDay: event.target.id });
-    // console.log(event.target.params);
   };
 
   handleCloseModalEdit = (event) => {
@@ -166,7 +163,6 @@ class Days extends Component {
           showModalEdit={this.state.showModalEdit}
           handleCloseModalEdit={this.handleCloseModalEdit}
           handleOpenModalEdit={this.handleOpenModalEdit}
-          handleChange={this.handleChange}
           clickedDay={this.state.clickedDay}
           eventName={this.state.eventName}
           description={this.state.description}

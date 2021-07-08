@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function WeekDays(props) {
   return (
     <div className="row">
@@ -17,17 +19,21 @@ function WeekDays(props) {
                 let randomR = Math.floor(Math.random() * 255);
                 let randomG = Math.floor(Math.random() * 255);
                 let randomB = Math.floor(Math.random() * 255);
+   
                 return (
+        
+                 
                   <button
-                    id={eventDay._id}
+                    id={eventDay._id}                 
                     style={{
                       backgroundColor: `rgb(${randomR},${randomG},${randomB})`,
                     }}
                     className="boxlist btn m-1"
-                    onClick={props.handleOpenModalEdit}
+                   onClick={props.handleOpenModalEdit}
                   >
                     {eventDay.eventName}
                   </button>
+             
                 );
               })}
             </div>
