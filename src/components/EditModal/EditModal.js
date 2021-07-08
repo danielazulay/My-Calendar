@@ -25,6 +25,7 @@ class EditModal extends Component {
       .delete(`https://ironrest.herokuapp.com/calendar/${id}`)
       .then((response) => {
         this.props.handleCloseModalEdit();
+        this.props.handleDraw();
       })
       .catch((err) => console.log(err));
   };
@@ -58,6 +59,7 @@ class EditModal extends Component {
         }
       );
       this.props.handleCloseModalEdit();
+      this.props.handleDraw();
       console.log(response);
     } catch (err) {
       console.log(err);
