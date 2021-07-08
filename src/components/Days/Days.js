@@ -136,7 +136,7 @@ class Days extends Component {
                 <i
                   id="-1"
                   onClick={this.handleChangeMonth}
-                  lassName="fas fa-chevron-left"
+                  className="fas fa-chevron-left"
                 ></i>
               </button>
               <span className="font">
