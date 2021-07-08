@@ -60,7 +60,7 @@ class NewEventModal extends Component {
                 <option defaultValue>Select a category</option>
                 <option value="Task">Task</option>
                 <option value="Reminder">Reminder</option>
-                <option value="Work">Work</option>
+                <option value="Work">Work/School</option>
                 <option value="Fun">Fun</option>
                 <option value="Travel">Travel</option>
               </select>
