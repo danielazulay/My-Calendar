@@ -44,6 +44,11 @@ class Days extends Component {
   };
 
   componentDidMount = async () => {
+   this.handleDraw()
+  };
+
+  handleDraw=async ()=>{
+
     try {
       const response = await axios.get(
         "https://ironrest.herokuapp.com/calendar"
@@ -53,7 +58,7 @@ class Days extends Component {
     } catch (err) {
       console.log(err);
     }
-  };
+  }
 
   handleFilter = (x) => {
     return this.state.calendar.filter((day) => {
@@ -142,6 +147,7 @@ class Days extends Component {
                 handleOpenModal={this.handleOpenModal}
                 handleFilter={this.handleFilter}
                 handleOpenModalEdit={this.handleOpenModalEdit}
+                currentMoment={this.state.currentMoment}
               />
             );
           })}
@@ -168,6 +174,7 @@ class Days extends Component {
           description={this.state.description}
           handleSubmit={this.handleSubmit}
           date={this.state.date}
+          handleDraw={this.handleDraw}
         />
       </div>
     );

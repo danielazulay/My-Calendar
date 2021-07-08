@@ -1,3 +1,4 @@
+import moment from "moment";
 import { Link } from "react-router-dom";
 
 function WeekDays(props) {
@@ -8,10 +9,10 @@ function WeekDays(props) {
           <div
             key={day}
             id={day}
-            className="col days-border"
             role="button"
             onClick={props.handleOpenModal}
-            style={{ overflow: "scroll" }}
+            style={{ overflowY: "scroll" }}
+            className={moment(day).isSame(props.currentMoment,"month")? "col days-border":"col days-border gray"}
           >
             <div>{day.slice(-2)}</div>
             <div>
