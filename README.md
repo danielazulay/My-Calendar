@@ -1,5 +1,5 @@
 
-![plot](README.md)
+![plot](/README.md)
 
 
 # Getting Started with Create React App
