@@ -6,9 +6,12 @@
 }
 
 .gray {
-  /* background-color: #dcdcdc;
-   */
-  background-color: black;
-  opacity: 50%;
+  background-color: #dcdcdc;
+  opacity: 0.5;
   color: grey;
+}
+
+.col {
+  width: 120px;
+  height: 140px;
 }
