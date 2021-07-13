@@ -16,12 +16,13 @@ function WeekDays(props) {
             onClick={props.handleOpenModal}
             style={{ overflowY: "scroll" }}
             className={
-              moment(day).isSame(props.currentMoment, "month")
+              moment(day).isSame(props.currentMoment, "month") 
                 ? "col days-border"
-                : "col days-border gray"
+                : "col days-border gray" 
             }
           >
-            <div>{day.slice(-2)}</div>
+            <div className={    moment(day).isSame(props.currentMoment, "day")  ? "text"
+                : null }>{day.slice(-2)}</div>
             <div>
               {props.handleFilter(day).map((eventDay) => {
 
